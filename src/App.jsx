@@ -1,18 +1,76 @@
+import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
 import Counter from "./components/Counter";
 import Lorem from "./components/Lorem";
+import Button from "./components/Button";
+import Input from "./components/Input";
+import DystopianBooks from "./components/DystopianBooks";
+import AddDystopianBook from "./components/AddDystopianBook";
+import Oboes from "./components/Oboes";
 
-function App() {
-  // const newDate = new Date();
-  // const nums = [1, 2, 3, 4];
-  // const sum = nums.reduce((acc, n) => acc * n, 1);
-  // const lis = [<li>1</li>, <li>2</li>];
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Lorem text={`Hello, world!`} isRed={false} />
+    this.state = {
+      dystopianBooks: [
+        {
+          id: 1,
+          title: "Gulliver's Travels",
+          author: "Jonathan Swift",
+          year: 1726,
+          wikiUrl: "https://en.wikipedia.org/wiki/Gulliver%27s_Travels",
+        },
+        {
+          id: 2,
+          title: "The Last Man",
+          author: "Mary Shelley",
+          year: 1826,
+          wikiUrl: "https://en.wikipedia.org/wiki/The_Last_Man",
+        },
+      ],
+      appTitle: "Dystopian Books",
+      isLoading: true,
+    };
+
+    setTimeout(() => {
+      this.setState((state) => ({ isLoading: false }));
+    }, 1 * 1000);
+  }
+
+  addBook = () => {
+    const newBook = {
+      id: 3,
+      title: "The Tragedy of Man",
+      author: "Imre Madách",
+      year: 1862,
+      wikiUrl: "https://en.wikipedia.org/wiki/The_Tragedy_of_Man",
+    };
+
+    if (this.state.dystopianBooks.length >= 3) {
+      return;
+    }
+
+    this.setState((state) => ({
+      dystopianBooks: [...state.dystopianBooks, newBook],
+    }));
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <Oboes />
+          {this.state.isLoading ? <h1>Loading</h1> : <h1>Ready</h1>}
+          <h1>{this.state.appTitle}</h1>
+          <DystopianBooks
+            books={this.state.dystopianBooks.reverse()}
+            isOrdered={true}
+          />
+          <AddDystopianBook addBook={this.addBook} />
+
+          {/* 
         <Lorem
           text={`Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum voluptas
         consequatur ipsam eum, quia nam, reprehenderit tenetur minima enim
@@ -21,43 +79,11 @@ function App() {
           isRed={true}
         />
 
-        {/* Lorem({ 
-          text: "lorem...",
-          isRed: true,
-        })
-
-        const Lorem = (props) => {
-
-        } */}
-
-        <h1>Hello, world!</h1>
-        <Counter start={0} />
-        <Counter start={10} />
-        <Counter start={100} />
-        {/* <time>{newDate.toString()}</time>
-        <p>2 + 2 = {2 + 2}</p>
-        <p>{sum}</p>
-        <p>{nums.length}</p>
-        <ul>
-          {nums.map((n) => (
-            <li>{n}</li>
-          ))}
-        </ul>
-        <ul>{lis}</ul> */}
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        {/* <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p> */}
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a> */}
-      </header>
-    </div>
-  );
+        <Counter start={0} /> */}
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;

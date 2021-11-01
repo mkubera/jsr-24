@@ -1,12 +1,18 @@
 import "./Lorem.css";
 
-const Lorem = (props) => {
-  const loremText = <p className={props.isRed ? "red" : ""}>{props.text}</p>;
+import Counter from "./Counter";
+
+const Lorem = ({ text, isRed }) => {
+  const loremText = <p className={isRed ? "red" : ""}>{text}</p>;
   return (
     <>
-      {/* <h2>{props.isRed ? "RED" : "notRED"}</h2> */}
+      {/* <h2>{isRed ? "RED" : "notRED"}</h2> */}
       {loremText}
-      {/* <p className={props.isRed ? "red" : ""}>{props.text}</p>; */}
+
+      {/* CONDITIONAL RENDERING */}
+      <p style={{ color: isRed ? "red" : "#fff" }}>hello</p>
+      {/* <p className={isRed ? "red" : ""}>{text}</p>; */}
+      <Counter start={3} />
     </>
   );
 };
