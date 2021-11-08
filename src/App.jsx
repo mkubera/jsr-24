@@ -9,6 +9,7 @@ import DystopianBooks from "./components/DystopianBooks";
 import AddDystopianBook from "./components/AddDystopianBook";
 import Oboes from "./components/Oboes";
 import Joke from "./components/Joke";
+import Fruits from "./components/Fruits";
 
 class App extends React.Component {
   constructor(props) {
@@ -62,6 +63,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+          <Fruits />
           <Joke />
           <Oboes />
           {this.state.isLoading ? <h1>Loading</h1> : <h1>Ready</h1>}
