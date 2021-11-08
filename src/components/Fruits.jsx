@@ -8,6 +8,7 @@ const Fruits = () => {
 
   return (
     <>
+      {/* TODO */}
       <ul>
         {fruits
           .filter((f, i) => i <= showCount)
