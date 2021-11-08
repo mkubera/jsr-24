@@ -8,7 +8,6 @@ const Fruits = () => {
 
   return (
     <>
-      <h1>These are the fruits I ♥</h1>
       <ul>
         {fruits
           .filter((f, i) => i <= showCount)
