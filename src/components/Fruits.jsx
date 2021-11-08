@@ -4,7 +4,7 @@ const Fruits = () => {
   const INIT_SHOW_COUNT = 0;
   const [showCount, setShowCount] = useState(INIT_SHOW_COUNT);
 
-  const fruits = [];
+  const fruits = [{ id: 1, name: fermented - fruit }];
 
   return (
     <>
